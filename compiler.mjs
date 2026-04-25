@@ -142,16 +142,7 @@ try {
             return;
         }
 
-        // generic function call
-        if (/^\w+\s*\([^)]*\)$/.test(line)) {
-            jsOutput.push(line + ';');
-            return;
-        }
-
-        // generic identifier without parentheses
-        if (/^\w+$/.test(line)) {
-            throw new Error(`Syntax Error: Function calls must include parentheses '()' at line ${index + 1}`);
-        }
+        throw new Error(`Syntax Error: invalid statement at line ${index + 1}`);
     });
 
     if (braceStack.length !== 0) {
