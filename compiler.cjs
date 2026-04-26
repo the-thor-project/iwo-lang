@@ -165,10 +165,4 @@ exec("node output.js", (err, stdout, stderr) => {
 
   console.log(stdout);
 
-  exec("rm output.js", (err) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-  });
-});
+fs.unlinkSync('output.js');
