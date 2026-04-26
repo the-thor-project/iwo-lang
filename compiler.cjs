@@ -163,8 +163,12 @@ exec("node output.js", (err, stdout, stderr) => {
     return;
   }
 
-     exec("rm output.js", (err, stdout, stderr) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
+  console.log(stdout);
+
+  exec("rm output.js", (err) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+  });
+});
