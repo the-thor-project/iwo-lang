@@ -156,15 +156,3 @@ try {
 } catch (err) {
     console.error('Compilation failed: ' + err.message);
 }
-
-fs.unlinkSync('output.js');
-exec("node output.js", (err, stdout, stderr) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-
-  console.log(stdout);
-
-  fs.unlinkSync('output.js');
-});
