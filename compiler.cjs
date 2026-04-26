@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
+const { exec } = require("child_process");
 
 const argv = yargs(hideBin(process.argv)).argv;
 const inputFile = argv['input-file'];
@@ -155,3 +156,15 @@ try {
 } catch (err) {
     console.error('Compilation failed: ' + err.message);
 }
+
+exec("node output.js", (err, stdout, stderr) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+
+     exec("rm output.js", (err, stdout, stderr) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
