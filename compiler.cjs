@@ -47,6 +47,9 @@ try {
 
         // closing braces
         if (line === '}' || line === 'end') {
+            if (braceStack.length === 0) {
+                throw new Error(`Syntax Error: extra closing brace at line ${index + 1}`);
+            }
             jsOutput.push(`}`);
             braceStack.pop();
             lastWasIf = false;
